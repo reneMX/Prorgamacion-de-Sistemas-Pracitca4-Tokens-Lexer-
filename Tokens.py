@@ -14,7 +14,7 @@ class Lexer():
     '''ATRIBUTOS'''
     #LISTAS
     x               = []
-    list_identi     = []
+    list_reservadas     = []
     #EXPRESIONES
     exp_identificadores = ""
 
@@ -24,6 +24,13 @@ class Lexer():
         self.x = list()
         self.file = open('Area.c', mode='r')
         self.list_identi = list()
+        self.list_reservadas ={"main","include","define","struct","void",
+                               "break","continue","default","else","for[^a-z]","if","return","Auto",
+                               "double","int ","Break","else","long","switch","Case","enum","register",
+                               "typedef","Char","extern","return","union","Const","float",
+                               "short","unsigned","signed","Default","goto","sizeof","volatile",
+                                "Do","static","while"
+                               }
         self.exp_identificadores = "[_a-zA-Z][_a-zA-Z0-9 ]{0,30}"
 
 
@@ -31,7 +38,7 @@ class Lexer():
         return self.x
 
     def obtenPractica3(self):
-        self.file = open('Area.c', mode='r')
+
         # Leemos todas las lineas del archivo
         archivo = self.file.read()
 
@@ -79,15 +86,28 @@ class Lexer():
         self.x = re.findall("\n+", archivo)
         print "Saltos de Linea"
         print(len(self.x))
-
         #Cerramos el archivo
         self.file.close()
         #FIN DE LA FUNCION obtenPractica3()
 
+    def obtenPractica4(self):
+        aux = list()
+        archivo = self.file.read()
+
+        for i in self.list_reservadas:
+            print(i)
+        '''Reconocimiento de Palabras Reservadas'''
+        for elemento in self.list_reservadas:
+            aux = re.findall(elemento,archivo)
+            if (len(aux)>0):
+                self.list_identi.append(aux)
+
+        print(self.list_identi)
 """INSTANCIAS"""
 
 l = Lexer()
-l.obtenPractica3()
+#l.obtenPractica3()
+l.obtenPractica4()
 
 
 
