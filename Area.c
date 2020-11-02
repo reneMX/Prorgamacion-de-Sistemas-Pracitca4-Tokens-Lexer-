@@ -21,4 +21,4 @@ void main(){
         //salida
         printf("\n\nArea=%5.2f",area);
         getch();
-}
+        }

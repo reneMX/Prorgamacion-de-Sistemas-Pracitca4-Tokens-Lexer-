@@ -24,12 +24,12 @@ class Lexer():
         self.x = list()
         self.file = open('Area.c', mode='r')
         self.list_identi = list()
-        self.list_reservadas ={"main","include","define","struct","void",
-                               "break","continue","default","else","for[^a-z]","if","return","Auto",
-                               "double","int ","Break","else","long","switch","Case","enum","register",
-                               "typedef","Char","extern","return","union","Const","float",
-                               "short","unsigned","signed","Default","goto","sizeof","volatile",
-                                "Do","static","while"
+        self.list_reservadas ={r"main",r"include",r"define",r"struct",r"void",
+                               r"break",r"continue",r"default",r"else",r"for[^a-z]",r"if",r"return",r"Auto",
+                               r"double",r"int ",r"Break",r"else","long",r"switch",r"Case",r"enum",r"register",
+                               r"typedef",r"Char",r"extern",r"return",r"union",r"Const",r"float",
+                               r"short",r"unsigned",r"signed",r"Default",r"goto",r"sizeof",r"volatile",
+                                r"Do",r"static",r"while"
                                }
         self.exp_identificadores = "[_a-zA-Z][_a-zA-Z0-9 ]{0,30}"
 
@@ -97,12 +97,31 @@ class Lexer():
         for i in self.list_reservadas:
             print(i)
         '''Reconocimiento de Palabras Reservadas'''
-        for elemento in self.list_reservadas:
-            aux = re.findall(elemento,archivo)
-            if (len(aux)>0):
-                self.list_identi.append(aux)
+        # for elemento in self.list_reservadas:
+        #     aux = re.findall(elemento,archivo)
+        #     if (len(aux)>0):
+        #         self.list_identi.append(aux)
+        # print(self.list_identi)
 
-        print(self.list_identi)
+        '''Reconocimiento de Numero de Lineas del archivo'''
+        # aux = re.findall("\n",archivo)
+        # print(len(aux)+1)
+
+        '''Reconocimiento de la linea donde esta cada Lexema'''
+        line_num = 0
+        for elemento in re.finditer(self.list_reservadas,archivo):
+
+            kind = elemento.lastgroup
+
+
+
+        # for elemento in self.list_reservadas:
+        #     for match in re.finditer(elemento, archivo):
+        #         s = match.start()
+        #         e = match.end()
+        #         print('Found {!r} at {:d}:{:d}'.format(
+        #             archivo[s:e], s, e))
+
 """INSTANCIAS"""
 
 l = Lexer()
