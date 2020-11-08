@@ -25,8 +25,8 @@ class Lexer():
         self.file = open('Area.c', mode='r')
         self.list_identi = list()
         self.list_reservadas ={r"main",r"include",r"define",r"struct",r"void",
-                               r"break",r"continue",r"default",r"else",r"for[^a-z]",r"if",r"return",r"Auto",
-                               r"double",r"int ",r"Break",r"else","long",r"switch",r"Case",r"enum",r"register",
+                               r"break",r"continue",r"default",r"else",r"for[^a-z]\(",r"if",r"return",r"Auto",
+                               r"double",r"int ",r"Break",r"else",r"long",r"switch",r"Case",r"enum",r"register",
                                r"typedef",r"Char",r"extern",r"return",r"union",r"Const",r"float",
                                r"short",r"unsigned",r"signed",r"Default",r"goto",r"sizeof",r"volatile",
                                 r"Do",r"static",r"while"
@@ -92,10 +92,12 @@ class Lexer():
 
     def obtenPractica4(self):
         aux = list()
-        archivo = self.file.read()
+        matriz = []
 
-        for i in self.list_reservadas:
-            print(i)
+        archivo = self.file.read()
+        #
+        # for i in self.list_reservadas:
+        #     print(i)
         '''Reconocimiento de Palabras Reservadas'''
         # for elemento in self.list_reservadas:
         #     aux = re.findall(elemento,archivo)
@@ -109,9 +111,39 @@ class Lexer():
 
         '''Reconocimiento de la linea donde esta cada Lexema'''
         line_num = 0
-        for elemento in re.finditer(self.list_reservadas,archivo):
 
-            kind = elemento.lastgroup
+        c = 0
+        for elemento in self.list_reservadas:
+            aux1 = re.search(elemento,archivo)
+            lin = re.search(r"\n",archivo)
+
+            # if (aux1 != None && lin != None):
+            #
+            #     print (aux1.span())
+            #     print(c)
+
+        print(c)
+
+
+
+        """Numero de Lineas de codigo con re.search"""
+        # for elemento in archivo:
+        #     aux1 = re.search(r"\n",elemento)
+        #     if (aux1 != None):
+        #          c += 1
+        # print(c+1)
+
+        # for elemento in self.list_reservadas:
+        #     aux1 = re.search(elemento,archivo)
+        #     if(aux1 != None):
+        #         c += 1
+        #
+        # print(c)
+        # print(aux1.span())
+
+        # for elemento in re.finditer(self.list_reservadas,archivo):
+        #
+        #     kind = elemento.lastgroup
 
 
 

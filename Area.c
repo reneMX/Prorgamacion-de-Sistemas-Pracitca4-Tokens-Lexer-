@@ -6,14 +6,14 @@ void main(){
         radio=0;
 
 
-        printf("Area de circulo ");
+        printf("Area de circulo \n");
         //entrada de datos
         printf("\nIntroduce el radio=> ");
         scanf("%f",&radio);
         /*Proceso para calcular  el area total*/
         if(area=0){
             for(i = 0; i<2 ; i++){
-                    print("Que afortunado")
+                    print("Que afortunado\n")
                 }
         }
 
