@@ -11,10 +11,18 @@ void main(){
         printf("\nIntroduce el radio=> ");
         scanf("%f",&radio);
         /*Proceso para calcular  el area total*/
-        if(area=0){
-            for(i = 0; i<2 ; i++){
+        if(area==0||radio==0){
+            if(radio == 1 || area ==3)
+            {
+            }
+            else
+            {
+                for(i = 0; i<2 ; i++)
+                {
                     print("Que afortunado\n")
                 }
+            }
+
         }
 
         area=3.1416*pow(radio,2);
